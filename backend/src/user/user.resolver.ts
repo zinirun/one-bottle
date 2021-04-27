@@ -8,7 +8,7 @@ import { User } from './user.entity';
 export class UserResolver {
     @UseGuards(LoginGuard)
     @Query(() => User)
-    verifyUser(@GetUser() user: User): User {
+    getUser(@GetUser() user: User): User {
         return user;
     }
 }
