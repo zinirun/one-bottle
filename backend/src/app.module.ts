@@ -5,6 +5,7 @@ import { join } from 'path';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { DateScalar } from './scalars/date';
+import { BottleModule } from './bottle/bottle.module';
 
 @Module({
     imports: [
@@ -19,6 +20,7 @@ import { DateScalar } from './scalars/date';
         }),
         AuthModule,
         UserModule,
+        BottleModule,
     ],
     providers: [DateScalar],
 })
