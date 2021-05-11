@@ -11,32 +11,29 @@ import {
 } from 'typeorm';
 
 @Entity()
-@ObjectType()
+@ObjectType({ description: 'User of overall service from OAuth' })
 export class User {
-    @Field(() => Number)
+    @Field(() => Number, { description: "User's ID (PK)" })
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Field(() => String)
+    @Field(() => String, { description: 'OAuth2 Provider' })
     @Column()
     provider: string;
 
-    @Field(() => String)
+    @Field(() => String, { description: "OAuth2 Provider's id" })
     @Column()
     providerId: string;
 
-    @Field(() => String)
+    @Field(() => String, { description: "User's Email Address" })
     @Column()
     email: string;
 
-    @Field(() => String)
+    @Field(() => String, { description: "User's name from OAuth, can be 'Anonymous'" })
     @Column()
     username: string;
 
-    /**
-     * Profile Image: S3 Address
-     */
-    @Field(() => String)
+    @Field(() => String, { description: "S3 URL of User's profile image" })
     @Column()
     profileImage: string;
 

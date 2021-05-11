@@ -2,12 +2,13 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type User {
-  id: Float!
-  provider: String!
-  providerId: String!
-  email: String!
-  username: String!
+"""Bottle means a group of members(users)"""
+type Bottle {
+  """Bottle's UUID"""
+  id: ID!
+
+  """Bottle's name"""
+  name: String!
   createdAt: Date!
   updatedAt: Date!
 }
@@ -15,6 +16,30 @@ type User {
 """Date custom scalar type"""
 scalar Date
 
+"""User of overall service from OAuth"""
+type User {
+  """User's ID (PK)"""
+  id: Float!
+
+  """OAuth2 Provider"""
+  provider: String!
+
+  """OAuth2 Provider's id"""
+  providerId: String!
+
+  """User's Email Address"""
+  email: String!
+
+  """User's name from OAuth, can be 'Anonymous'"""
+  username: String!
+
+  """S3 URL of User's profile image"""
+  profileImage: String!
+  createdAt: Date!
+  updatedAt: Date!
+}
+
 type Query {
-  verifyUser: User!
+  getUser: User!
+  getBottle(id: String!): Bottle!
 }

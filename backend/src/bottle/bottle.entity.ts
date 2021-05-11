@@ -1,4 +1,4 @@
-import { Field, ObjectType } from '@nestjs/graphql';
+import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { DateScalar } from 'src/scalars/date';
 import {
     Column,
@@ -11,13 +11,13 @@ import {
 import { BottleMember } from './bottle.member.entity';
 
 @Entity()
-@ObjectType()
+@ObjectType({ description: 'Bottle means a group of members(users)' })
 export class Bottle {
-    @Field(() => Number)
+    @Field(() => ID, { description: "Bottle's UUID" })
     @PrimaryGeneratedColumn('uuid')
     id: number;
 
-    @Field(() => String)
+    @Field(() => String, { description: "Bottle's name" })
     @Column()
     name: string;
 
