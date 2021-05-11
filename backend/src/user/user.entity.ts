@@ -1,6 +1,14 @@
 import { Field, ObjectType } from '@nestjs/graphql';
+import { BottleMember } from 'src/bottle/bottle.member.entity';
 import { DateScalar } from 'src/scalars/date';
-import { Column, CreateDateColumn, Entity, ObjectIdColumn, UpdateDateColumn } from 'typeorm';
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    ObjectIdColumn,
+    OneToMany,
+    UpdateDateColumn,
+} from 'typeorm';
 
 @Entity()
 @ObjectType()
@@ -24,6 +32,16 @@ export class User {
     @Field(() => String)
     @Column()
     username: string;
+
+    /**
+     * Profile Image: S3 Address
+     */
+    @Field(() => String)
+    @Column()
+    profileImage: string;
+
+    @OneToMany(() => BottleMember, (bottleMember) => bottleMember.bottles)
+    bottles: BottleMember[];
 
     /**
      * DB insert time.
