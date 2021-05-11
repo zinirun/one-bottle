@@ -8,21 +8,21 @@ export class AuthController {
 
     @Get('google')
     @UseGuards(AuthGuard('google'))
-    async googleAuth(@Request() req) {}
+    async googleAuth(@Request() req: any) {}
 
     @Get('google/redirect')
     @UseGuards(AuthGuard('google'))
-    async googleAuthRedirect(@Request() req, @Response() res): Promise<Response> {
+    async googleAuthRedirect(@Request() req: any, @Response() res): Promise<Response> {
         return await this.authService.oAuthLogin(req, res);
     }
 
     @Get('github')
     @UseGuards(AuthGuard('github'))
-    async githubAuth(@Request() req) {}
+    async githubAuth(@Request() req: any) {}
 
     @Get('github/redirect')
     @UseGuards(AuthGuard('github'))
-    async githubAuthRedirect(@Request() req, @Response() res): Promise<Response> {
+    async githubAuthRedirect(@Request() req: any, @Response() res): Promise<Response> {
         return await this.authService.oAuthLogin(req, res);
     }
 
