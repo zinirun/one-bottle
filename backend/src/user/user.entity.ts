@@ -5,7 +5,7 @@ import {
     Column,
     CreateDateColumn,
     Entity,
-    ObjectIdColumn,
+    PrimaryGeneratedColumn,
     OneToMany,
     UpdateDateColumn,
 } from 'typeorm';
@@ -14,7 +14,7 @@ import {
 @ObjectType()
 export class User {
     @Field(() => Number)
-    @ObjectIdColumn()
+    @PrimaryGeneratedColumn()
     id: number;
 
     @Field(() => String)

@@ -4,7 +4,7 @@ import {
     Column,
     CreateDateColumn,
     Entity,
-    ObjectIdColumn,
+    PrimaryGeneratedColumn,
     OneToMany,
     UpdateDateColumn,
 } from 'typeorm';
@@ -14,7 +14,7 @@ import { BottleMember } from './bottle.member.entity';
 @ObjectType()
 export class Bottle {
     @Field(() => Number)
-    @ObjectIdColumn('uuid')
+    @PrimaryGeneratedColumn('uuid')
     id: number;
 
     @Field(() => String)
