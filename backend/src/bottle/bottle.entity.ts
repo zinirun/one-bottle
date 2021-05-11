@@ -1,17 +1,28 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { DateScalar } from 'src/scalars/date';
-import { Column, CreateDateColumn, Entity, ObjectIdColumn, UpdateDateColumn } from 'typeorm';
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    ObjectIdColumn,
+    OneToMany,
+    UpdateDateColumn,
+} from 'typeorm';
+import { BottleMember } from './bottle.member.entity';
 
 @Entity()
 @ObjectType()
 export class Bottle {
     @Field(() => Number)
-    @ObjectIdColumn()
+    @ObjectIdColumn('uuid')
     id: number;
 
     @Field(() => String)
     @Column()
-    bottleName: string;
+    name: string;
+
+    @OneToMany(() => BottleMember, (bottleMember) => bottleMember.bottles)
+    members: BottleMember[];
 
     /**
      * DB insert time.
