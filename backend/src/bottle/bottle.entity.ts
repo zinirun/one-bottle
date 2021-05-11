@@ -1,5 +1,6 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { DateScalar } from 'src/scalars/date';
+import { User } from 'src/user/user.entity';
 import {
     Column,
     CreateDateColumn,
@@ -7,6 +8,8 @@ import {
     PrimaryGeneratedColumn,
     OneToMany,
     UpdateDateColumn,
+    ManyToOne,
+    JoinColumn,
 } from 'typeorm';
 import { BottleMember } from './bottle.member.entity';
 
@@ -15,7 +18,7 @@ import { BottleMember } from './bottle.member.entity';
 export class Bottle {
     @Field(() => ID, { description: "Bottle's UUID" })
     @PrimaryGeneratedColumn('uuid')
-    id: number;
+    id: string;
 
     @Field(() => String, { description: "Bottle's name" })
     @Column()
@@ -23,6 +26,11 @@ export class Bottle {
 
     @OneToMany(() => BottleMember, (bottleMember) => bottleMember.bottles)
     members: BottleMember[];
+
+    @Field(() => User, { description: 'master of group' })
+    @ManyToOne(() => User, (user) => user.bottles)
+    @JoinColumn()
+    master: User;
 
     /**
      * DB insert time.
