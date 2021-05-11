@@ -12,7 +12,7 @@ export class AuthController {
 
     @Get('google/redirect')
     @UseGuards(AuthGuard('google'))
-    async googleAuthRedirect(@Request() req: any, @Response() res): Promise<Response> {
+    async googleAuthRedirect(@Request() req: any, @Response() res: any): Promise<Response> {
         return await this.authService.oAuthLogin(req, res);
     }
 
@@ -22,12 +22,12 @@ export class AuthController {
 
     @Get('github/redirect')
     @UseGuards(AuthGuard('github'))
-    async githubAuthRedirect(@Request() req: any, @Response() res): Promise<Response> {
+    async githubAuthRedirect(@Request() req: any, @Response() res: any): Promise<Response> {
         return await this.authService.oAuthLogin(req, res);
     }
 
     @Post('logout')
-    async logout(@Response() res): Promise<Response> {
+    async logout(@Response() res: any): Promise<Response> {
         return await this.authService.logout(res);
     }
 }
