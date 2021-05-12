@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { DateScalar } from './scalars/date';
 import { BottleModule } from './bottle/bottle.module';
+import { ThreadModule } from './thread/thread.module';
 
 @Module({
     imports: [
@@ -21,6 +22,7 @@ import { BottleModule } from './bottle/bottle.module';
         AuthModule,
         UserModule,
         BottleModule,
+        ThreadModule,
     ],
     providers: [DateScalar],
 })
