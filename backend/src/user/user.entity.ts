@@ -1,6 +1,7 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { BottleMember } from 'src/bottle/bottle.member.entity';
 import { DateScalar } from 'src/scalars/date';
+import { Thread } from 'src/thread/thread.entity';
 import {
     Column,
     CreateDateColumn,
@@ -39,6 +40,9 @@ export class User {
 
     @OneToMany(() => BottleMember, (bottleMember) => bottleMember.bottles)
     bottles: BottleMember[];
+
+    @OneToMany(() => Thread, (thread) => thread.author)
+    threads: BottleMember[];
 
     /**
      * DB insert time.
