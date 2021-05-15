@@ -9,12 +9,35 @@ type Bottle {
 
   """Bottle's name"""
   name: String!
+
+  """master of group"""
+  master: User!
   createdAt: Date!
   updatedAt: Date!
 }
 
 """Date custom scalar type"""
 scalar Date
+
+"""Thread means one message in Bottle"""
+type Thread {
+  """Thread's UUID"""
+  id: ID!
+
+  """is Thread closed"""
+  isClosed: Boolean!
+
+  """Thread's type"""
+  type: String!
+
+  """Thread's result (JSON)"""
+  result: String!
+
+  """author of Thread"""
+  author: User!
+  createdAt: Date!
+  updatedAt: Date!
+}
 
 """User of overall service from OAuth"""
 type User {
@@ -42,4 +65,13 @@ type User {
 type Query {
   getUser: User!
   getBottle(id: String!): Bottle!
+  getThread(id: String!): Thread!
+}
+
+type Mutation {
+  createBottle(bottle: BottleCreateInput!): Bottle!
+}
+
+input BottleCreateInput {
+  name: String!
 }
