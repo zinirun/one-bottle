@@ -17,11 +17,11 @@ import { TeamMember } from './team.member.entity';
 @Entity()
 @ObjectType({ description: 'Team means a group of members' })
 export class Team {
-    @Field(() => ID, { description: "Bottle's UUID" })
+    @Field(() => ID, { description: "Team's UUID" })
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Field(() => String, { description: "Bottle's name" })
+    @Field(() => String, { description: "Team's name" })
     @Column()
     name: string;
 
@@ -29,7 +29,7 @@ export class Team {
     members: TeamMember[];
 
     @Field(() => User, { description: 'master of group' })
-    @ManyToOne(() => User, (user) => user.bottles)
+    @ManyToOne(() => User, (user) => user.teams)
     @JoinColumn()
     master: User;
 

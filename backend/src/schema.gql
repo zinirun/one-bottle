@@ -27,10 +27,10 @@ scalar Date
 
 """Team means a group of members"""
 type Team {
-  """Bottle's UUID"""
+  """Team's UUID"""
   id: ID!
 
-  """Bottle's name"""
+  """Team's name"""
   name: String!
 
   """master of group"""

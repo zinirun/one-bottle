@@ -39,7 +39,7 @@ export class User {
     profileImage: string;
 
     @OneToMany(() => TeamMember, (teamMember) => teamMember.teams)
-    bottles: TeamMember[];
+    teams: TeamMember[];
 
     @OneToMany(() => Thread, (thread) => thread.author)
     threads: Thread[];
