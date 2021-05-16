@@ -57,7 +57,7 @@ type User {
   username: String!
 
   """S3 URL of User's profile image"""
-  profileImage: String!
+  profileImage: String
   createdAt: Date!
   updatedAt: Date!
 }

@@ -34,8 +34,8 @@ export class User {
     @Column()
     username: string;
 
-    @Field(() => String, { description: "S3 URL of User's profile image" })
-    @Column()
+    @Field(() => String, { description: "S3 URL of User's profile image", nullable: true })
+    @Column({ nullable: true })
     profileImage: string;
 
     @OneToMany(() => TeamMember, (teamMember) => teamMember.teams)
