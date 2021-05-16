@@ -30,7 +30,9 @@ export class AuthService {
 
             res.cookie('x-access-token', token, { httpOnly: true });
 
-            return res.redirect(`${process.env.CLIENT_ADDR}/workspace`);
+            return res.redirect(
+                `${process.env.CLIENT_ADDR}/${process.env.LOGIN_REDIRECT_ENDPOINT}`,
+            );
         } catch (err) {
             throw new UnauthorizedException(err);
         }
