@@ -1,5 +1,5 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { BottleMember } from 'src/bottle/bottle.member.entity';
+import { TeamMember } from 'src/team/team.member.entity';
 import { DateScalar } from 'src/scalars/date';
 import { Thread } from 'src/thread/thread.entity';
 import {
@@ -38,11 +38,11 @@ export class User {
     @Column()
     profileImage: string;
 
-    @OneToMany(() => BottleMember, (bottleMember) => bottleMember.bottles)
-    bottles: BottleMember[];
+    @OneToMany(() => TeamMember, (teamMember) => teamMember.teams)
+    bottles: TeamMember[];
 
     @OneToMany(() => Thread, (thread) => thread.author)
-    threads: BottleMember[];
+    threads: Thread[];
 
     /**
      * DB insert time.

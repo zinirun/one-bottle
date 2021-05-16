@@ -1,4 +1,5 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Team } from 'src/team/team.entity';
 import { DateScalar } from 'src/scalars/date';
 import { User } from 'src/user/user.entity';
 import {
@@ -12,7 +13,7 @@ import {
 } from 'typeorm';
 
 @Entity()
-@ObjectType({ description: 'Thread means one message in Bottle' })
+@ObjectType({ description: 'Thread means one message in Team' })
 export class Thread {
     @Field(() => ID, { description: "Thread's UUID" })
     @PrimaryGeneratedColumn('uuid')
@@ -36,6 +37,10 @@ export class Thread {
     @ManyToOne(() => User, (user) => user.threads)
     @JoinColumn()
     author: User;
+
+    @ManyToOne(() => Team, (team) => team.threads)
+    @JoinColumn()
+    team: Team;
 
     /**
      * DB insert time.

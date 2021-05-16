@@ -2,24 +2,7 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-"""Bottle means a group of members(users)"""
-type Bottle {
-  """Bottle's UUID"""
-  id: ID!
-
-  """Bottle's name"""
-  name: String!
-
-  """master of group"""
-  master: User!
-  createdAt: Date!
-  updatedAt: Date!
-}
-
-"""Date custom scalar type"""
-scalar Date
-
-"""Thread means one message in Bottle"""
+"""Thread means one message in Team"""
 type Thread {
   """Thread's UUID"""
   id: ID!
@@ -35,6 +18,23 @@ type Thread {
 
   """author of Thread"""
   author: User!
+  createdAt: Date!
+  updatedAt: Date!
+}
+
+"""Date custom scalar type"""
+scalar Date
+
+"""Team means a group of members"""
+type Team {
+  """Bottle's UUID"""
+  id: ID!
+
+  """Bottle's name"""
+  name: String!
+
+  """master of group"""
+  master: User!
   createdAt: Date!
   updatedAt: Date!
 }
@@ -64,14 +64,14 @@ type User {
 
 type Query {
   getUser: User!
-  getBottle(id: String!): Bottle!
+  getTeam(id: String!): Team!
   getThread(id: String!): Thread!
 }
 
 type Mutation {
-  createBottle(bottle: BottleCreateInput!): Bottle!
+  createTeam(team: TeamCreateInput!): Team!
 }
 
-input BottleCreateInput {
+input TeamCreateInput {
   name: String!
 }

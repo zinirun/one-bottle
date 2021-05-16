@@ -2,14 +2,14 @@ import { Field, ObjectType } from '@nestjs/graphql';
 import { DateScalar } from 'src/scalars/date';
 import { User } from 'src/user/user.entity';
 import { CreateDateColumn, Entity, JoinColumn, ManyToOne, UpdateDateColumn } from 'typeorm';
-import { Bottle } from './bottle.entity';
+import { Team } from './team.entity';
 
 @Entity()
 @ObjectType()
-export class BottleMember {
-    @ManyToOne(() => Bottle, { primary: true })
-    @JoinColumn({ name: 'group_id' })
-    bottles: Bottle[];
+export class TeamMember {
+    @ManyToOne(() => Team, { primary: true })
+    @JoinColumn({ name: 'team_id' })
+    teams: Team[];
 
     @ManyToOne(() => User, { primary: true })
     @JoinColumn({ name: 'user_id' })

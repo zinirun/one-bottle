@@ -5,7 +5,7 @@ import { join } from 'path';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { DateScalar } from './scalars/date';
-import { BottleModule } from './bottle/bottle.module';
+import { TeamModule } from './team/team.module';
 import { ThreadModule } from './thread/thread.module';
 
 @Module({
@@ -21,7 +21,7 @@ import { ThreadModule } from './thread/thread.module';
         }),
         AuthModule,
         UserModule,
-        BottleModule,
+        TeamModule,
         ThreadModule,
     ],
     providers: [DateScalar],
