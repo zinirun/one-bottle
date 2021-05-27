@@ -45,6 +45,12 @@ export class User {
     threads: Thread[];
 
     /**
+     * Delete Flag
+     */
+    @Column({ default: false })
+    isDeleted: boolean;
+
+    /**
      * DB insert time.
      */
     @Field(() => DateScalar)

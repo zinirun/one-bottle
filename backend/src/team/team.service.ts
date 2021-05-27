@@ -18,6 +18,9 @@ export class TeamService {
     public async getOne(id: string): Promise<Team> {
         return this.teamRepository.findOne(id, {
             relations: ['members', 'members.users'],
+            where: {
+                isDeleted: false,
+            },
         });
     }
 

@@ -43,6 +43,12 @@ export class Thread {
     team: Team;
 
     /**
+     * Delete Flag
+     */
+    @Column({ default: false })
+    isDeleted: boolean;
+
+    /**
      * DB insert time.
      */
     @Field(() => DateScalar)

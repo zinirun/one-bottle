@@ -37,6 +37,12 @@ export class Team {
     threads: Thread[];
 
     /**
+     * Delete Flag
+     */
+    @Column({ default: false })
+    isDeleted: boolean;
+
+    /**
      * DB insert time.
      */
     @Field(() => DateScalar)

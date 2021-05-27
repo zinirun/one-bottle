@@ -11,6 +11,10 @@ export class ThreadService {
     ) {}
 
     public async getOne(id: string): Promise<Thread> {
-        return this.threadRepository.findOne(id);
+        return this.threadRepository.findOne(id, {
+            where: {
+                isDeleted: false,
+            },
+        });
     }
 }
